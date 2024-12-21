@@ -12,3 +12,8 @@
             uses: actions/setup-node@v2
             with:
               node-version: 14
+      plugin-job:
+        runs-on: ubunut-latest
+        steps:
+          - name: Install Dev Plugin Dependencies
+            run: npm run dev
