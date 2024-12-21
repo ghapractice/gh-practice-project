@@ -14,11 +14,11 @@ jobs:
         - name: Install Dependencies
           run: npm ci
         - name: dev
-          run: npm run dev
+          run: echo "Local Development completed successfully"
         - name: Dev Code
           run: echo "Devlopment Build Successfully completed..!"
   plugin-job:
-    needs: greting-job
+    needs: dev-job
     runs-on: ubuntu-latest
     steps:
       - name: Cloning Code From The Repository

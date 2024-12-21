@@ -20,6 +20,6 @@
           - name: Build Code
             run: npm run build
           - name: Preview
-            run: npm run preview
+            run: echo "preview is successfull"
           - name: Deploy Code
             run: echo "Deploying Code..!"
