@@ -17,5 +17,9 @@
         steps:
           - name: Cloning Code From The Repository
             uses: actions/checkout@v3
+          - name: Install Dependencies
+            uses: actions/setup-node@v2
+            with:
+                node-version: 18
           - name: Install Dev Plugin Dependencies
             run: npm run dev
