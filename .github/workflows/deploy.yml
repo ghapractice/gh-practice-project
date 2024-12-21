@@ -6,5 +6,9 @@ jobs:
     steps:
       - name: build job
         run: echo "printing greeting"
-      - name: cloning code from the repository
+      - name: Cloning Code From The Repository
         uses: actions/checkout@v3
+      - name: Install Dependencies
+        uses: actions/setup-node@v2
+        with:
+            node-version: 14
