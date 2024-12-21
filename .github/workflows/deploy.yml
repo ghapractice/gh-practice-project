@@ -13,7 +13,7 @@
             with:
               node-version: 14
       plugin-job:
-        runs-on: ubunut-latest
+        runs-on: ubuntu-latest
         steps:
           - name: Cloning Code From The Repository
             uses: actions/checkout@v3
