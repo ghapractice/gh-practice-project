@@ -6,22 +6,18 @@
         steps:
           - name: build job
             run: echo "printing greeting"
-          - name: Cloning Code From The Repository
-            uses: actions/checkout@v3
-          - name: Install Dependencies
-            uses: actions/setup-node@v2
-            with:
-              node-version: 14
       plugin-job:
         runs-on: ubuntu-latest
         steps:
           - name: Cloning Code From The Repository
             uses: actions/checkout@v3
           - name: Install Dependencies
-            uses: actions/setup-node@v2
-            with:
-                node-version: 18
-          - name: Installing npm vite plugin
-            run: npm install -g vite
-          - name: Install Dev Plugin Dependencies
-            run: npm run dev
+            run: npm ci
+          - name: lint
+            run: npm run lint
+          - name: Test Code
+            run: npm run test
+          - name: Build Code
+            run: npm run build
+          - name: Deploy Code
+            run: echo "Deploying Code..!"
