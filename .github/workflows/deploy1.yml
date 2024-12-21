@@ -1,5 +1,5 @@
 name: deploy workflow1
-on: [workflow_dispatch, push,pull]
+on: [workflow_dispatch, push]
 jobs:
   greting-job:
     runs-on: ubuntu-latest
