@@ -18,7 +18,7 @@ jobs:
         - name: Dev Code
           run: echo "Devlopment Build Successfully completed..!"
   plugin-job:
-    needs: dev-job
+    needs: greting-job
     runs-on: ubuntu-latest
     steps:
       - name: Cloning Code From The Repository
