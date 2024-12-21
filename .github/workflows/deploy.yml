@@ -15,5 +15,7 @@
       plugin-job:
         runs-on: ubunut-latest
         steps:
+          - name: Cloning Code From The Repository
+            uses: actions/checkout@v3
           - name: Install Dev Plugin Dependencies
             run: npm run dev
