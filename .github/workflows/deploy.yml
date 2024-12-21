@@ -19,5 +19,7 @@
             run: npm run test
           - name: Build Code
             run: npm run build
+          - name: Preview
+            run: npm run preview
           - name: Deploy Code
             run: echo "Deploying Code..!"
