@@ -1,0 +1,67 @@
+name: deploy workflow
+on: [workflow_dispatch, push]
+jobs:
+  greting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build job
+        run: echo "printing greeting"
+  dev-job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Cloning Code From The Repository
+          uses: actions/checkout@v3
+        - name: Install Dependencies
+          run: npm ci
+        - name: dev
+          run: npm run dev
+        - name: Dev Code
+          run: echo "Devlopment Build Successfully completed..!"
+  plugin-job:
+    needs: dev-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning Code From The Repository
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: Plugins Installation Status
+        run: echo "Plugins Installed successfully"
+  test-job:
+      needs: plugin-job
+      runs-on: ubuntu-latest
+      steps:
+        - name: Cloning Code From The Repository
+          uses: actions/checkout@v3
+        - name: Install Dependencies
+          run: npm ci
+        - name: lint
+          run: npm run lint
+        - name: Test Code
+          run: npm run test
+        - name: Test Case Status
+          run: echo "Test Casese Sucessfully Executed..!"
+      
+  deploy-job:
+      needs: test-job
+      runs-on: ubuntu-latest
+      steps:
+        - name: Cloning Code From The Repository
+          uses: actions/checkout@v3
+        - name: Install Dependencies
+          run: npm ci
+        - name: lint
+          run: npm run lint
+        - name: build code
+          run: npm run build
+        - name: Build Job Status
+          run: echo "Build Job Sucessfully Completed..!"
+  successfull-job:
+      needs: deploy-job
+      runs-on: ubuntu-latest
+      steps:
+        - name: Success/Failure job 
+          run: echo "printing greeting"
+                
