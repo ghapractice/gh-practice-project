@@ -1,7 +1,9 @@
-name: deploy workflow
-on: [workflow_dispatch, push]
-jobs:
-    first-job:
+    name: deploy workflow
+    on:
+      - workflow_dispatch
+      - push
+    jobs:
+      first-job:
         runs-on: ubuntu-latest
         steps:
           - name: build job
@@ -12,44 +14,45 @@ jobs:
             uses: actions/setup-node@v2
             with:
               node-version: 14
-    plugin-job:
+      plugin-job:
         runs-on: ubunut-latest
         steps:
-          - name : Install Dev Plugin Dependencies
+          - name: Install Dev Plugin Dependencies
             run: npm run dev
-    lint-job:
+      lint-job:
         runs-on: ubunut-latest
         steps:
-         - name: Lint Dependencies Installation
-           run: npm run lint
-    test-job:
+          - name: Lint Dependencies Installation
+            run: npm run lint
+      test-job:
         runs-on: ubunut-latest
         steps:
           - name: Running Test Cases
             uses: npm run test
-    build-job:
-        needs: [plugin-job,lint-job,test-job]
+      build-job:
+        needs:
+          - plugin-job
+          - lint-job
+          - test-job
         runs-on: ubuntu-latest
         steps:
           - name: Build is Running
             run: npm run build
-    preview-job:
+      preview-job:
         needs: build-job
         runs-on: ubuntu-latest
         steps:
           - name: Preview Verififcation
             run: nm run preview
-    final-test-job:
+      final-test-job:
         needs: preview-job
         runs-on: ubunut-latest
         steps:
           - name: Finaltest Run Job
             run: npm run test
-    succes-job:
+      succes-job:
         needs: final-test-job
         runs-on: ubuntu-latest
         steps:
-          - name: "Successfully Build"
+          - name: Successfully Build
             run: echo "Successfully running the CI Build"
-           
-    
