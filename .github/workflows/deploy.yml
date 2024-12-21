@@ -21,5 +21,7 @@
             uses: actions/setup-node@v2
             with:
                 node-version: 18
+          - name: Installing npm vite plugin
+            run: npm install -g vite
           - name: Install Dev Plugin Dependencies
             run: npm run dev
